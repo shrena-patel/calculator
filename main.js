@@ -32,31 +32,58 @@ keys.addEventListener('click', event => {
         //change below to a map
         operatorKeys.forEach(e => { e.dataset.state = '' })
         key.dataset.state = 'selected'
-        
+
         calculator.dataset.firstNumber = displayValue
         calculator.dataset.operator = key.dataset.key
     }
 
     if (type == 'equal') {
         // perform a calculation
-        const firstNumber = Number(calculator.dataset.firstNumber)
+        const firstNumber = calculator.dataset.firstNumber
         const operator = calculator.dataset.operator
-        const secondNumber = Number(displayValue)
+        const secondNumber = displayValue
         // console.log(firstNumber, operator, secondNumber)
+        display.textContent = calculate(firstNumber, operator, secondNumber)
+    }
 
-
-        let result = ''
-        if (operator == 'plus') result = firstNumber + secondNumber
-        if (operator == 'minus') result = firstNumber - secondNumber
-        if (operator == 'times') result = firstNumber * secondNumber
-        if (operator == 'divide') result = firstNumber / secondNumber
-        // console.log(result)
-
-        display.textContent = result
-
-
+    if (type == 'clear') {
+        display.textContent = '0'  
+        delete calculator.dataset.firstNumber
+        delete calculator.dataset.operator
     }
 
     calculator.dataset.previousKeyType = type
 })
 
+function calculate(firstNumber, operator, secondNumber) {
+    firstNumber = Number(firstNumber)
+    secondNumber = Number(secondNumber)
+    
+    if (operator == 'plus') return firstNumber + secondNumber
+    if (operator == 'minus') return firstNumber - secondNumber
+    if (operator == 'times') return firstNumber * secondNumber
+    if (operator == 'divide') return firstNumber / secondNumber
+  
+}
+
+// TESTING
+function clearCalculator () {
+    const clearKey = document.querySelector('[data-type="clear"]')
+    clearKey.click()
+}
+
+function testClearKey () {
+    clearCalculator()
+    console.assert(display.textContent == '0', 'Clear key. Display should be 0') 
+    console.assert(!calculator.dataset.firstNumber, 'Clear key. No first number')
+    console.assert(!calculator.dataset.operator, 'Clear key. No operator')
+}
+
+const one = document.querySelector('.one')
+
+//one test
+
+one.click()
+console.assert(display.textContent == '1', 'Clicked one')
+clearCalculator()
+testClearKey()

@@ -126,12 +126,14 @@ Calculator
  background: var(--grey-100);
 }
 
-[data-type="number"] {
+[data-type="number"],
+[data-type="clear"] {
  background: #fff;
 }
 
 [data-type="operator"]:active,
-[data-type="number"]:active {
+[data-type="number"]:active,
+[data-type="clear"]:active {
  background: var(--grey-200);
 }
 
