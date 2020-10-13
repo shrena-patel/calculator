@@ -134,3 +134,7 @@ Calculator
 [data-type="number"]:active {
  background: var(--grey-200);
 }
+
+[data-state="selected"] {
+  background-color: var(--grey-300);
+}
