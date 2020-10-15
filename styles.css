@@ -133,7 +133,7 @@ Calculator
 
 [data-type="operator"]:active,
 [data-type="number"]:active,
-[data-type="clear"]:active {
+[data-type="clear"] {
  background: var(--grey-200);
 }
 

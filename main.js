@@ -66,7 +66,8 @@ function calculate(firstNumber, operator, secondNumber) {
   
 }
 
-// TESTING
+// TESTING ============================================ //
+
 function clearCalculator () {
     const clearKey = document.querySelector('[data-type="clear"]')
     clearKey.click()
@@ -80,10 +81,27 @@ function testClearKey () {
 }
 
 const one = document.querySelector('.one')
+const five = document.querySelector('.five')
+const nine = document.querySelector('.nine')
 
 //one test
 
 one.click()
 console.assert(display.textContent == '1', 'Clicked one')
+clearCalculator()
+testClearKey()
+
+// 15 test
+one.click()
+five.click()
+console.assert(display.textContent == '15', 'Clicked 1 and 5')
+clearCalculator()
+testClearKey()
+
+// 159 test
+one.click()
+five.click()
+nine.click()
+console.assert(display.textContent == '159', 'Clicked 1, 5 and 9')
 clearCalculator()
 testClearKey()
