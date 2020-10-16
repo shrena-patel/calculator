@@ -83,6 +83,7 @@ function testClearKey () {
 const one = document.querySelector('.one')
 const five = document.querySelector('.five')
 const nine = document.querySelector('.nine')
+const eight = document.querySelector('.eight')
 
 //one test
 
@@ -103,5 +104,14 @@ one.click()
 five.click()
 nine.click()
 console.assert(display.textContent == '159', 'Clicked 1, 5 and 9')
+clearCalculator()
+testClearKey()
+
+// 1598 test
+one.click()
+five.click()
+nine.click()
+eight.click()
+console.assert(display.textContent == '1598', 'Clicked 1, 5, 9 and 8')
 clearCalculator()
 testClearKey()
